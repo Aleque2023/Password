@@ -4,9 +4,20 @@ redo = 0
 #Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
 
 import time,sys
-welcome = ["| \"]
+from time import sleep
+welcome = [" ---------------------------------------------------------------------",
+           "|             _______        ______  _______                _______   |",
+           "| \        / |        |     |       |       |   /\    /\   |          |",
+           "|  \  /\  /  |------- |     |       |       |  /  \  /  \  |-------   |",
+           "|   \/  \/   |_______ |____  ______ |_______| /    \/    \ |_______   |",
+           "|_____________________________________________________________________|"]
 
-start = input("Do you have an account? (Y/N) ")
+for msg in welcome:
+    sys.stdout.write(f"\n{msg}")
+    sys.stdout.flush()
+    time.sleep(.5)
+
+start = input("\n\nDo you have an account? (Y/N) ")
 
 while secloop == 0:
     try:
