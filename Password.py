@@ -3,6 +3,9 @@ secloop = 0
 redo = 0
 #Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
 
+import time,sys
+welcome = ["| \"]
+
 start = input("Do you have an account? (Y/N) ")
 
 while secloop == 0:
