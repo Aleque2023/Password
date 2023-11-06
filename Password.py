@@ -12,7 +12,11 @@ welcome = [" -------------------------------------------------------------------
            "|   \/  \/   |_______ |____  ______ |_______| /    \/    \ |_______   |",
            "|_____________________________________________________________________|"]
 
-for msg in welcome:
+for char in welcome.index[0]:
+    sys.stdout.write(char[0])
+    sys.stdout.flush()
+    time.sleep(.08)
+for msg in welcome[1:5]:
     sys.stdout.write(f"\n{msg}")
     sys.stdout.flush()
     time.sleep(.5)
