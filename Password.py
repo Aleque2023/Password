@@ -10,16 +10,22 @@ welcome = [" -------------------------------------------------------------------
            "| \        / |        |     |       |       |   /\    /\   |          |",
            "|  \  /\  /  |------- |     |       |       |  /  \  /  \  |-------   |",
            "|   \/  \/   |_______ |____  ______ |_______| /    \/    \ |_______   |",
-           "|_____________________________________________________________________|"]
+           "|                                                                     |",
+           " --------------------------------------------------------------------- "]
 
-for char in welcome.index[0]:
+for char in welcome[0]:
     sys.stdout.write(char[0])
     sys.stdout.flush()
-    time.sleep(.08)
+    time.sleep(.04)
 for msg in welcome[1:5]:
     sys.stdout.write(f"\n{msg}")
     sys.stdout.flush()
     time.sleep(.5)
+print("")    
+for char in welcome[6]:
+    sys.stdout.write(char[0])
+    sys.stdout.flush()
+    time.sleep(.04)
 
 start = input("\n\nDo you have an account? (Y/N) ")
 
