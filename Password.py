@@ -41,29 +41,23 @@ while start == 0:
         try:
             if start.lower() == "n":
                 username = input("\nPlease enter a username: ")
-                password = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n")
                 while redo == 0:
+                    password = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n")
                     for spec in special:
-                        test = spec
-                        if test in password:
-                            output = True
-                    if output == False or len(password) < 8:
-                        while redo3 == 0:
-                            print("\nThe password does not meet the requirements!")
-                            password = input("\nPlease enter a password that meets the requirements: ")
-                            try:
-                                if len(password) < 8 or output == False:
-                                    redo == 0
-                                elif len(password) > 7 and output == True:
-                                    redo += 1
-                                    secloop += 1
-                                    redo3 += 1
-                            except:
-                                pass
-                    elif output == True and len(password) > 7:
-                        redo += 1
-                        redo3 += 1
-                        secloop += 1
+                        if spec in password:
+                            if len(password) >= 8:
+                                output = True
+                                redo += 1
+                                secloop += 1
+                            else:
+                                redo = 0
+                        elif spec not in password or len(password) < 8:
+                            output = False
+                if output == True:
+                    redo += 1
+                    secloop += 1
+                else:
+                    redo = 0
             else:
                 secloop += 1
         except:
@@ -122,4 +116,4 @@ while start == 0:
     except:
         pass
 
-print("\nThanks for using my program!")
+print("\nThanks for using my program!\n")
