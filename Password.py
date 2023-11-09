@@ -3,6 +3,7 @@ loop = 0
 secloop = 0
 redo = 0
 redo2 = 0
+redo3 = 0
 test = ""
 #Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
 
@@ -41,24 +42,28 @@ while start == 0:
             if start.lower() == "n":
                 username = input("\nPlease enter a username: ")
                 password = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n")
-                for spec in special:
-                    test = spec
-                    if test in password and len(password) > 7:
-                        redo += 1
-                        secloop += 1
-                    else:
-                        while redo == 0:
+                while redo == 0:
+                    for spec in special:
+                        test = spec
+                        if test in password:
+                            output = True
+                    if output == False or len(password) < 8:
+                        while redo3 == 0:
                             print("\nThe password does not meet the requirements!")
                             password = input("\nPlease enter a password that meets the requirements: ")
                             try:
-                                if len(password) < 8 or test not in password:
+                                if len(password) < 8 or output == False:
                                     redo == 0
-                                elif len(password) > 7 and test in password:
+                                elif len(password) > 7 and output == True:
                                     redo += 1
                                     secloop += 1
-                                    exit
+                                    redo3 += 1
                             except:
                                 pass
+                    elif output == True and len(password) > 7:
+                        redo += 1
+                        redo3 += 1
+                        secloop += 1
             else:
                 secloop += 1
         except:
@@ -111,6 +116,7 @@ while start == 0:
             secloop = 0
             redo = 0
             redo2 = 0
+            redo3 = 0
         elif question.lower() == "n":
             start += 1
     except:
