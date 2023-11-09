@@ -3,7 +3,6 @@ loop = 0
 secloop = 0
 redo = 0
 redo2 = 0
-redo3 = 0
 test = ""
 #Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
 
@@ -110,7 +109,6 @@ while start == 0:
             secloop = 0
             redo = 0
             redo2 = 0
-            redo3 = 0
         elif question.lower() == "n":
             start += 1
     except:
