@@ -75,7 +75,7 @@ while start == 0:
                 loopTwo += 1
             else:
                 loopTwo = 0
-            if len(passlist) == 4:
+            if len(passlist) == 3:
                 passlist.pop(0)
         except:
             pass
