@@ -1,9 +1,8 @@
 start = 0
-loop = 0
-secloop = 0
-redo = 0
-redo2 = 0
-test = ""
+loopOne = 0
+loopTwo = 0
+redoOne = 0
+redoTwo = 0
 #Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
 
 import time,sys,os
@@ -36,29 +35,29 @@ while start == 0:
 
     start = input("\n\nDo you have an account? (Y/N) ")
 
-    while secloop == 0:
+    while loopOne == 0:
         try:
             if start.lower() == "n":
                 username = input("\nPlease enter a username: ")
-                while redo == 0:
-                    password = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n")
+                while redoOne == 0:
+                    password = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n\n")
                     for spec in special:
                         if spec in password:
                             if len(password) >= 8:
                                 output = True
-                                redo += 1
-                                secloop += 1
+                                redoOne += 1
+                                loopOne += 1
                             else:
-                                redo = 0
+                                redoOne = 0
                         elif spec not in password or len(password) < 8:
                             output = False
                 if output == True:
-                    redo += 1
-                    secloop += 1
+                    redoOne += 1
+                    loopOne += 1
                 else:
-                    redo = 0
+                    redoOne = 0
             else:
-                secloop += 1
+                loopOne += 1
         except:
             pass
 
@@ -67,35 +66,35 @@ while start == 0:
 
     reset = input("\nWould you like to reset your password? (Y/N) ")
 
-    while loop == 0:
+    while loopTwo == 0:
         try:
             if reset.lower() == "y":
                 newpass = input("\nPlease enter a password that's 8 characters or more: ")
                 if len(newpass) < 8:
-                    redo2 = 0
-                    while redo2 == 0:
+                    redoTwo = 0
+                    while redoTwo == 0:
                         print("\nThe password does the meet the length requirements!")
                         newpass = input("\nPlease enter a password that meets the requirements: ")
                         try:
                             if len(newpass) < 8:
-                                redo2 == 0
+                                redoTwo == 0
                             elif len(newpass) > 7:
                                 if newpass in passlist:
                                     print("\nThat password has been used before!")
-                                    redo2 = 0
+                                    redoTwo = 0
                                 else:
                                     passlist.append(newpass)
-                                    redo2 += 1
-                                    loop += 1
+                                    redoTwo += 1
+                                    loopTwo += 1
                         except:
                             pass
                 elif len(newpass) > 7 and newpass not in passlist:
-                    loop += 1
+                    loopTwo += 1
                 elif newpass in passlist:
                     print("\nThat password has been used before!")
-                    loop = 0
+                    loopTwo = 0
             else:
-                loop += 1
+                loopTwo += 1
             if len(passlist) == 4:
                 passlist.pop(0)
         except:
@@ -105,10 +104,10 @@ while start == 0:
         if question.lower() == "y":
             print("\n"*100)
             start = 0
-            loop = 0
-            secloop = 0
-            redo = 0
-            redo2 = 0
+            loopTwo = 0
+            loopOne = 0
+            redoOne = 0
+            redoTwo = 0
         elif question.lower() == "n":
             start += 1
     except:
