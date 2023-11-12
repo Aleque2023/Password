@@ -32,20 +32,20 @@ for char in welcome[6]:
     time.sleep(.01)
 
 special = ["!", "@", "#", "$", "%", "&"]
+num = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"] #Will add a number requirement as well.
 
 def requirements(x,y):
     while x == 0:
         y = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n\n")
         for spec in special:
-            if spec in y:
-                if len(y) >= 8:
-                    if y not in passlist:
-                        x == 1
-                        passlist.append(y)
-                        return y
-                    else:
-                        print("\nThat password has been used before!\n")
-                        x = 0
+            if spec in y and len(y) >= 8:
+                if y not in passlist:
+                    x == 1
+                    passlist.append(y)
+                    return y
+                else:
+                    print("\nThat password has been used before!\n")
+                    x = 0
                 
 
 while start == 0:
