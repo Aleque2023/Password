@@ -4,8 +4,11 @@ loopTwo = 0
 redoOne = 0
 redoTwo = 0
 password = ""
-passlist = []
+passList = []
+special = ["!", "@", "#", "$", "%", "&"]
+number = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"]
 #Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
+
 
 import time,sys,os
 from time import sleep
@@ -16,6 +19,7 @@ welcome = [" -------------------------------------------------------------------
            "|   \/  \/   |_______ |____  ______ |_______| /    \/    \ |_______   |",
            "|                                                                     |",
            " --------------------------------------------------------------------- "]
+
 
 for char in welcome[0]:
     sys.stdout.write(char[0])
@@ -31,31 +35,31 @@ for char in welcome[6]:
     sys.stdout.flush()
     time.sleep(.01)
 
-special = ["!", "@", "#", "$", "%", "&"]
-num = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"] #Will add a number requirement as well.
 
 def requirements(x,y):
     while x == 0:
-        y = input("\nPlease enter a password with the following requirements: \n8 characters or more\nContains a special character\n\n")
+        y = input("\nPlease enter a password with the following requirements: \n• 8 characters or more\n• Contains a special character\n• Contains a number\n\n")
         for spec in special:
             if spec in y and len(y) >= 8:
-                if y not in passlist:
-                    x == 1
-                    passlist.append(y)
-                    return y
-                else:
-                    print("\nThat password has been used before!\n")
-                    x = 0
+                for num in number:
+                    if num in y:
+                        if y not in passList:
+                            x == 1
+                            passList.append(y)
+                            return y
+                        else:
+                            print("\nThat password has been used before!\n")
+                            x = 0
                 
 
 while start == 0:
-
     start = input("\n\nDo you have an account? (Y/N) ")
+
 
     while loopOne == 0:
         try:
             if start.lower() == "n":
-                username = input("\nPlease enter a username: ")
+                userName = input("\nPlease enter a username: ")
                 requirements(redoOne,password)
                 loopOne += 1
                 redoOne += 1
@@ -64,7 +68,9 @@ while start == 0:
         except:
             pass
 
+
     reset = input("\nWould you like to reset your password? (Y/N) ")
+
 
     while loopTwo == 0:
         try:
@@ -75,8 +81,8 @@ while start == 0:
                 loopTwo += 1
             else:
                 loopTwo = 0
-            if len(passlist) == 3:
-                passlist.pop(0)
+            if len(passList) == 3:
+                passList.pop(0)
         except:
             pass
     question = input("\nWould you like to run this program again? (Y/N) ")
@@ -92,5 +98,7 @@ while start == 0:
             start += 1
     except:
         pass
-print(f"Passwords associated with {username}:{passlist}\nThe current password is {passlist[-1]}")
+    
+    
+print(f"Passwords associated with {userName}:{passList}\nThe current password is {passList[-1]}")
 print("\nThanks for using my program!\n")
