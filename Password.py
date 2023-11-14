@@ -1,9 +1,11 @@
 start = 0
 loopOne = 0
 loopTwo = 0
+loopThree = 0
 redoOne = 0
 redoTwo = 0
 password = ""
+userName = ""
 passList = []
 special = ["!", "@", "#", "$", "%", "&"]
 number = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"]
@@ -46,7 +48,7 @@ def requirements(x,y):
                         if y not in passList:
                             x == 1
                             passList.append(y)
-                            return y
+                            return x, y
                         else:
                             print("\nThat password has been used before!\n")
                             x = 0
@@ -62,17 +64,17 @@ while start == 0:
                 userName = input("\nPlease enter a username: ")
                 requirements(redoOne,password)
                 loopOne += 1
-                redoOne += 1
             else:
                 loopOne += 1
         except:
             pass
 
 
-    reset = input("\nWould you like to reset your password? (Y/N) ")
+
 
 
     while loopTwo == 0:
+        reset = input("\nWould you like to reset your password? (Y/N) ")
         try:
             if reset.lower() == "y":
                 requirements(redoTwo,password)
@@ -85,20 +87,32 @@ while start == 0:
                 passList.pop(0)
         except:
             pass
-    question = input("\nWould you like to run this program again? (Y/N) ")
-    try:
-        if question.lower() == "y":
-            print("\n"*100)
-            start = 0
-            loopTwo = 0
-            loopOne = 0
-            redoOne = 0
-            redoTwo = 0
-        else:
-            start += 1
-    except:
-        pass
+        
+        
+    while loopThree == 0:
+        question = input("\nWould you like to run this program again? (Y/N) ")
+        try:
+            if question.lower() == "y":
+                print("\n"*100)
+                start = 0
+                loopThree = 0
+                loopTwo = 0
+                loopOne = 0
+                redoOne = 0
+                redoTwo = 0
+            elif question.lower() == "n":
+                loopThree += 1
+                start += 1
+        except:
+            pass
     
-    
-print(f"Passwords associated with {userName}:{passList}\nThe current password is {passList[-1]}")
+try:
+    if userName == "":
+        userName = "N/A"
+    if len(passList) > 1:
+        print(f"Password associated with {userName} : {passList[-1]}")
+    else:
+        print(f"Password associated with {userName} : {passList[0]}")
+except:
+    pass
 print("\nThanks for using my program!\n")
