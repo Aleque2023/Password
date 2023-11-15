@@ -2,6 +2,7 @@ start = 0
 loopOne = 0
 loopTwo = 0
 loopThree = 0
+qLoop = 0
 redoOne = 0
 redoTwo = 0
 password = ""
@@ -55,7 +56,17 @@ def requirements(x,y):
                 
 
 while start == 0:
-    start = input("\n\nDo you have an account? (Y/N) ")
+    while qLoop == 0:
+        start = input("\n\nDo you have an account? (Y/N) ")
+        try:
+            if start.lower() == "y":
+                qLoop += 1
+                start += 1
+            elif start.lower() == "n":
+                qLoop += 1
+        except:
+            pass
+            
 
 
     while loopOne == 0:
@@ -110,9 +121,9 @@ try:
     if userName == "":
         userName = "N/A"
     if len(passList) > 1:
-        print(f"Password associated with {userName} : {passList[-1]}")
+        print(f"\nPassword associated with {userName} : {passList[-1]}")
     else:
-        print(f"Password associated with {userName} : {passList[0]}")
+        print(f"\nPassword associated with {userName} : {passList[0]}")
 except:
     pass
 print("\nThanks for using my program!\n")
