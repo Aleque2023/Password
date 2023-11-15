@@ -68,7 +68,6 @@ while start == 0:
             pass
             
 
-
     while loopOne == 0:
         try:
             if start.lower() == "n":
@@ -79,9 +78,6 @@ while start == 0:
                 loopOne += 1
         except:
             pass
-
-
-
 
 
     while loopTwo == 0:
@@ -117,6 +113,7 @@ while start == 0:
         except:
             pass
     
+    
 try:
     if userName == "":
         userName = "N/A"
@@ -126,4 +123,6 @@ try:
         print(f"\nPassword associated with {userName} : {passList[0]}")
 except:
     pass
+
+
 print("\nThanks for using my program!\n")
