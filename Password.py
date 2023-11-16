@@ -10,7 +10,7 @@ userName = ""
 passList = []
 special = ["!", "@", "#", "$", "%", "&"]
 number = ["1", "2", "3", "4", "5", "6", "7", "8", "9","0"]
-#Note for future: Will save username and password into a dictionary. Update value (password) associated with key (username)
+#Note for future: Will save username and password into a file
 
 
 import time,sys,os
@@ -56,6 +56,11 @@ def requirements(x,y):
                 
 
 while start == 0:
+    
+    
+    loopThree = 0
+    
+    
     while qLoop == 0:
         start = input("\n\nDo you have an account? (Y/N) ")
         try:
@@ -71,14 +76,13 @@ while start == 0:
     while loopOne == 0:
         try:
             if start.lower() == "n":
-                userName = input("\nPlease enter a username: ")
+                userName = [input("\nPlease enter a username: ")]
                 requirements(redoOne,password)
                 loopOne += 1
             else:
                 loopOne += 1
         except:
             pass
-
 
     while loopTwo == 0:
         reset = input("\nWould you like to reset your password? (Y/N) ")
@@ -101,12 +105,13 @@ while start == 0:
         try:
             if question.lower() == "y":
                 print("\n"*100)
-                start = 0
-                loopThree = 0
                 loopTwo = 0
                 loopOne = 0
                 redoOne = 0
                 redoTwo = 0
+                qLoop = 0
+                start = 0
+                loopThree += 1
             elif question.lower() == "n":
                 loopThree += 1
                 start += 1
